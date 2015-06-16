@@ -1,0 +1,40 @@
+{
+  "name": "deku-soundplayer",
+  "version": "0.1.0-rc",
+  "description": "Create custom SoundCloud players with Deku",
+  "main": "index.js",
+  "scripts": {
+    "build-js": "rm -rf ./lib && babel src -d lib --stage 0",
+    "build": "npm run build-js",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/soundblogs/deku-soundplayer.git"
+  },
+  "keywords": [
+    "deku",
+    "component",
+    "functional",
+    "soundcloud",
+    "player",
+    "audio"
+  ],
+  "author": "Dmitri Voronianski <dmitri.voronianski@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/soundblogs/deku-soundplayer/issues"
+  },
+  "homepage": "https://github.com/soundblogs/deku-soundplayer#readme",
+  "dependencies": {
+    "deku": "^0.4.5",
+    "soundcloud-audio": "^0.1.4"
+  },
+  "devDependencies": {
+    "babel": "^5.5.8",
+    "babelify": "^6.1.2",
+    "browserify": "^10.2.4",
+    "envify": "^3.4.0",
+    "watchify": "^3.2.2"
+  }
+}
