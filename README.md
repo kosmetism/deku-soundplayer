@@ -7,3 +7,11 @@
 > Components for custom SoundCloud players with Deku. 
 
 _Note:_ For now it's VERY lightweight port (e.g. there's no container components) of original [ReactSoundPlayer](https://github.com/soundblogs/react-soundplayer) and used inside [embeddable SoundCloud player](https://github.com/soundblogs/soundplayer-widget). 
+
+```bash
+npm install deku-soundplayer --save
+```
+
+---
+
+**MIT Licensed**
