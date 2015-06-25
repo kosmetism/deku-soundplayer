@@ -1,5 +1,5 @@
-/** @jsx deku.dom */
-import deku from 'deku';
+/** @jsx dom */
+import { dom } from 'deku';
 
 function prettyTime (time) {
     let hours = Math.floor(time / 3600);

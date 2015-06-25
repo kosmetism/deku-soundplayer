@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/soundblogs/deku-soundplayer#readme",
   "dependencies": {
+    "classnames": "^2.1.2",
     "deku": "^0.4.5",
     "soundcloud-audio": "^0.1.4"
   },
