@@ -26,6 +26,9 @@ const Player = {
         seeking: {
             type: 'boolean',
             optional: true
+        },
+        soundCloudAudio: function (prop) {
+            return (prop instanceof SoundCloudAudio);
         }
     },
 
