@@ -10,6 +10,32 @@ import SoundPlayerContainer from './addons/SoundPlayerContainer';
 import { SoundCloudLogoSVG } from './components/Icons';
 
 const Player = {
+    propTypes: {
+        duration: {
+            type: 'number',
+            optional: true
+        },
+        currentTime: {
+            type: 'number',
+            optional: true
+        },
+        playing: {
+            type: 'boolean',
+            optional: true
+        },
+        seeking: {
+            type: 'boolean',
+            optional: true
+        }
+    },
+
+    defaultProps: {
+        duration: 0,
+        currentTime: 0,
+        seeking: false,
+        playing: false
+    },
+
     render(component) {
         const { props } = component;
 
