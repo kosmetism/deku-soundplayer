@@ -27,6 +27,10 @@ const Player = {
             type: 'boolean',
             optional: true
         },
+        track: {
+            type: 'object',
+            optional: true
+        },
         soundCloudAudio: function (prop) {
             return (prop instanceof SoundCloudAudio);
         }
