@@ -1,5 +1,5 @@
 /** @jsx dom */
-import { dom } from 'deku';
+import { dom } from 'deku'; // eslint-disable-line no-unused-vars
 import assign from 'object-assign';
 import SoundCloudAudio from 'soundcloud-audio';
 import { stopAllOther, addToStore } from '../utils/audioStore';
@@ -9,6 +9,7 @@ export default {
         url: {
             type: 'string'
         },
+
         soundCloudAudio: function (prop) {
             return (prop instanceof SoundCloudAudio);
         }
@@ -68,6 +69,25 @@ export default {
         soundCloudAudio.on('seeked', onSeekedTrack);
         soundCloudAudio.on('pause', onAudioEnded);
         soundCloudAudio.on('ended', onAudioEnded);
+    },
+
+    afterUpdate(component, prevProps, prevState, setState) {
+        const { props, state } = component;
+        const { soundCloudAudio } = props;
+        const playedBefore = state.playing;
+
+        if (props.url !== prevProps.url) {
+            soundCloudAudio.stop();
+            soundCloudAudio.resolve(props.url, (data) => {
+                // TBD: support for playlists
+                const track = data.tracks ? data.tracks[0] : data;
+                setState({ track });
+
+                if (playedBefore) {
+                    soundCloudAudio.play();
+                }
+            });
+        }
     },
 
     beforeUnmount(component) {

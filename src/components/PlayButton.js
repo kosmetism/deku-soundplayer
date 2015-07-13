@@ -1,5 +1,5 @@
 /** @jsx dom */
-import { dom } from 'deku';
+import { dom } from 'deku'; // eslint-disable-line no-unused-vars
 import SoundCloudAudio from 'soundcloud-audio';
 
 import { PlayIconSVG, PauseIconSVG } from './Icons';
@@ -40,7 +40,7 @@ export default {
         }
 
         return (
-            <button class="sb-soundplayer-widget-play" onClick={handleClick}>
+            <button class="sb-soundplayer-play-btn" onClick={handleClick}>
                 {!props.playing ? (
                     <PlayIconSVG onClick={handleClick} />
                 ) : (

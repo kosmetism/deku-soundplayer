@@ -1,5 +1,5 @@
 /** @jsx dom */
-import { dom } from 'deku';
+import { dom } from 'deku'; // eslint-disable-line no-unused-vars
 
 const iconPropTypes = {
     onClick: {
@@ -21,7 +21,7 @@ const SoundCloudLogoSVG = {
 
         return (
             <svg
-                class="sb-soundplayer-widget-cover-logo"
+                class="sb-soundplayer-cover-logo"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
                 onClick={props.onClick}

@@ -1,5 +1,5 @@
 /** @jsx dom */
-import { dom } from 'deku';
+import { dom } from 'deku'; // eslint-disable-line no-unused-vars
 import SoundCloudAudio from 'soundcloud-audio';
 
 export default {
@@ -40,8 +40,8 @@ export default {
         }
 
         return (
-            <div class="sb-soundplayer-widget-progress-container" onClick={handleSeekTrack}>
-                <div class="sb-soundplayer-widget-progress-inner" style={style} />
+            <div class="sb-soundplayer-progress-container" onClick={handleSeekTrack}>
+                <div class="sb-soundplayer-progress-inner" style={style} />
             </div>
         );
     }

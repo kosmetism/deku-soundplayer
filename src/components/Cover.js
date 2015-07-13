@@ -1,5 +1,5 @@
 /** @jsx dom */
-import { dom } from 'deku';
+import { dom } from 'deku'; // eslint-disable-line no-unused-vars
 import ClassNames from 'classnames';
 
 export default {
@@ -11,7 +11,7 @@ export default {
 
     render(component) {
         const { props } = component;
-        const classNames = ClassNames('sb-soundplayer-widget-cover', props.class);
+        const classNames = ClassNames('sb-soundplayer-cover', props.class);
 
         return (
             <div class={classNames} style={{'background-image': `url(${props.artworkUrl})`}}>

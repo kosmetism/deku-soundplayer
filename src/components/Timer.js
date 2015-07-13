@@ -1,5 +1,5 @@
 /** @jsx dom */
-import { dom } from 'deku';
+import { dom } from 'deku'; // eslint-disable-line no-unused-vars
 
 function prettyTime (time) {
     let hours = Math.floor(time / 3600);
@@ -30,6 +30,7 @@ export default {
         duration: {
             type: 'number'
         },
+
         currentTime: {
             type: 'number'
         }
@@ -39,7 +40,7 @@ export default {
         const { props } = component;
 
         return (
-            <div class="sb-soundplayer-widget-timer">
+            <div class="sb-soundplayer-timer">
                 {prettyTime(props.currentTime)} / {prettyTime(props.duration)}
             </div>
         );

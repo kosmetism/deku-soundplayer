@@ -1,5 +1,5 @@
 /** @jsx dom */
-import { dom } from 'deku';
+import { dom } from 'deku'; // eslint-disable-line no-unused-vars
 import SoundCloudAudio from 'soundcloud-audio';
 
 import Cover from './components/Cover';
