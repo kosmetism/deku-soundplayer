@@ -12,6 +12,18 @@ _Note:_ For now it's VERY lightweight port (e.g. there's no container components
 npm install deku-soundplayer --save
 ```
 
+<!-- To do:
+
+- move <Player /> to soundplayer-widget
+- add some docs here (mentioning react-soundplayer)
+- release new version
+- install new version to soundplayer-widget
+- update widget styles to refer to updated classes
+- release new version of soundplayer-widget
+- install new versions to get-soundplayer-widget landing
+- add store support as in deku to react version
+- add after update support of new tracks to react version -->
+
 ---
 
 **MIT Licensed**
