@@ -2,16 +2,21 @@
 import { dom } from 'deku'; // eslint-disable-line no-unused-vars
 import assign from 'object-assign';
 import SoundCloudAudio from 'soundcloud-audio';
-import { stopAllOther, addToStore } from '../utils/audioStore';
+import {
+    stopAllOther,
+    addToPlayedStore,
+    addToRegistry,
+    getFromRegistry
+} from '../utils/audioStore';
 
 export default {
     propTypes: {
-        url: {
+        resolveUrl: {
             type: 'string'
         },
 
-        soundCloudAudio: function (prop) {
-            return (prop instanceof SoundCloudAudio);
+        clientId: {
+            type: 'string'
         }
     },
 
@@ -24,21 +29,43 @@ export default {
         };
     },
 
-    afterMount(component, el, setState) {
-        const { props } = component;
-        const { soundCloudAudio } = props;
+    beforeMount(component) {
+        const { props, state, id } = component;
+        const { clientId } = props;
 
-        soundCloudAudio.resolve(props.url, (data) => {
-            // TBD: support for playlists
-            const track = data.tracks ? data.tracks[0] : data;
-            setState({ track });
-        });
+        if (!clientId) {
+            throw new Error(
+                `You need to get clientId from SoundCloud
+                https://github.com/soundblogs/react-soundplayer#usage`
+            );
+        }
+
+        if ('undefined' !== typeof window) {
+            const soundCloudAudio = new SoundCloudAudio(clientId);
+            addToRegistry(id, soundCloudAudio);
+        }
+    },
+
+    afterMount(component, el, setState) {
+        const { props, state, id } = component;
+        const { resolveUrl, streamUrl } = props;
+        const soundCloudAudio = getFromRegistry(id);
+
+        if (streamUrl) {
+            soundCloudAudio.preload(streamUrl);
+        } else if (resolveUrl) {
+            soundCloudAudio.resolve(resolveUrl, (data) => {
+                // TBD: support for playlists
+                const track = data.tracks ? data.tracks[0] : data;
+                setState({ track });
+            });
+        }
 
         function onAudioStarted () {
             setState({playing: true});
 
             stopAllOther(soundCloudAudio.playing);
-            addToStore(soundCloudAudio);
+            addToPlayedStore(soundCloudAudio);
         }
 
         function getCurrentTime () {
@@ -72,36 +99,45 @@ export default {
     },
 
     afterUpdate(component, prevProps, prevState, setState) {
-        const { props, state } = component;
-        const { soundCloudAudio } = props;
+        const { props, state, id } = component;
+        const { resolveUrl, streamUrl } = props;
+        const soundCloudAudio = getFromRegistry(id);
         const playedBefore = state.playing;
 
-        if (props.url !== prevProps.url) {
+        function restartIfPlayed () {
+            if (playedBefore) {
+                soundCloudAudio.play();
+            }
+        }
+
+        if (streamUrl !== prevProps.streamUrl) {
             soundCloudAudio.stop();
-            soundCloudAudio.resolve(props.url, (data) => {
+            soundCloudAudio.preload(streamUrl);
+            restartIfPlayed();
+        } else if (resolveUrl !== prevProps.resolveUrl) {
+            soundCloudAudio.stop();
+            soundCloudAudio.resolve(resolveUrl, (data) => {
                 // TBD: support for playlists
                 const track = data.tracks ? data.tracks[0] : data;
                 setState({ track });
-
-                if (playedBefore) {
-                    soundCloudAudio.play();
-                }
+                restartIfPlayed();
             });
         }
     },
 
     beforeUnmount(component) {
-        const { props } = component;
-        props.soundCloudAudio.unbindAll();
+        const soundCloudAudio = getFromRegistry(component.id);
+        soundCloudAudio.unbindAll();
     },
 
     render(component) {
-        const { props, state } = component;
+        const { props, state, id } = component;
+        const soundCloudAudio = getFromRegistry(id);
 
         function wrapChild (child) {
             let cloneElement = assign({}, child);
             if (cloneElement.props) {
-                cloneElement.props = assign({}, cloneElement.props, state, { soundCloudAudio: props.soundCloudAudio });
+                cloneElement.props = assign({}, cloneElement.props, state, { soundCloudAudio });
             }
             return cloneElement;
         }
