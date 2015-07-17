@@ -2,8 +2,18 @@
 let _playedAudios = [];
 let _audioRegistry = {};
 
+function each (arr, cb) {
+    if (arr) {
+        for (let i = 0, len = arr.length; i < len; i++) {
+            if (arr[i] && cb(arr[i], i, arr)) {
+                break;
+            }
+        }
+    }
+}
+
 export function stopAllOther (playing) {
-    _playedAudios.forEach((soundCloudAudio) => {
+    each(_playedAudios, soundCloudAudio => {
         if (soundCloudAudio.playing && soundCloudAudio.playing !== playing) {
             soundCloudAudio.stop();
         }
@@ -13,13 +23,12 @@ export function stopAllOther (playing) {
 export function addToPlayedStore (soundCloudAudio) {
     let isPresent = false;
 
-    for (let i = 0, len = _playedAudios.length; i < len; i++) {
-        let _soundCloudAudio = _playedAudios[i];
+    each(_playedAudios, _soundCloudAudio => {
         if (_soundCloudAudio.playing === soundCloudAudio.playing) {
             isPresent = true;
-            break;
+            return true;
         }
-    }
+    });
 
     if (!isPresent) {
         _playedAudios.push(soundCloudAudio);
