@@ -33,7 +33,7 @@
   },
   "peerDependencies": {
     "deku": ">= 0.5.x",
-    "magic-virtual-element": ">= 1.x"
+    "virtual-element": ">= 1.x"
   },
   "devDependencies": {
     "babel": "^5.5.8",

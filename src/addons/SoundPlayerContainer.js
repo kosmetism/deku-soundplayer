@@ -1,5 +1,5 @@
 /** @jsx dom */
-import dom from 'magic-virtual-element'; // eslint-disable-line no-unused-vars
+import dom from 'virtual-element'; // eslint-disable-line no-unused-vars
 import assign from 'object-assign';
 import SoundCloudAudio from 'soundcloud-audio';
 import {

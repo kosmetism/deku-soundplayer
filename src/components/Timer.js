@@ -1,5 +1,5 @@
 /** @jsx dom */
-import dom from 'magic-virtual-element'; // eslint-disable-line no-unused-vars
+import dom from 'virtual-element'; // eslint-disable-line no-unused-vars
 
 function prettyTime (time) {
     let hours = Math.floor(time / 3600);
