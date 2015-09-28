@@ -1,6 +1,6 @@
 {
   "name": "deku-soundplayer",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "description": "Create custom SoundCloud players with Deku",
   "main": "index.js",
   "scripts": {
@@ -29,7 +29,7 @@
   "dependencies": {
     "classnames": "^2.1.2",
     "object-assign": "^4.0.1",
-    "soundcloud-audio": "^0.1.4"
+    "soundcloud-audio": "^0.1.6"
   },
   "peerDependencies": {
     "deku": ">= 0.5.x",
