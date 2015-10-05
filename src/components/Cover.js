@@ -14,7 +14,7 @@ export default {
         const classNames = ClassNames('sb-soundplayer-cover', props.class);
 
         return (
-            <div class={classNames} style={props.artworkUrl ? {'background-image': `url(${props.artworkUrl})`} : {}}>
+            <div class={classNames} style={props.artworkUrl ? `background-image: url(${props.artworkUrl})` : ''}>
                 {props.children}
             </div>
         );

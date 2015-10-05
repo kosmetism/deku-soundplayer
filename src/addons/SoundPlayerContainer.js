@@ -136,8 +136,8 @@ export default {
 
         function wrapChild (child) {
             let cloneElement = assign({}, child);
-            if (cloneElement.props) {
-                cloneElement.props = assign({}, cloneElement.props, state, { soundCloudAudio });
+            if (cloneElement.attributes) {
+                cloneElement.attributes = assign({}, cloneElement.attributes, state, { soundCloudAudio });
             }
             return cloneElement;
         }
