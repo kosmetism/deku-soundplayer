@@ -32,27 +32,6 @@ const SoundCloudLogoSVG = {
     }
 };
 
-// Player Button Icons
-const ButtonIconSVG = {
-    propTypes: iconPropTypes,
-
-    render(component) {
-        const { props } = component;
-
-        return (
-            <svg
-                class="sb-soundplayer-button-icon"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 32 32"
-                fill="currentColor"
-                onClick={props.onClick}
-            >
-                {props.children}
-            </svg>
-        );
-    }
-};
-
 // |> Play
 const PlayIconSVG = {
     propTypes: iconPropTypes,
@@ -65,9 +44,14 @@ const PlayIconSVG = {
         const { props } = component;
 
         return (
-            <ButtonIconSVG {...props}>
+            <svg
+                class="sb-soundplayer-cover-logo"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                onClick={props.onClick}
+            >
                 <path d="M0 0 L32 16 L0 32 z" />
-            </ButtonIconSVG>
+            </svg>
         );
     }
 };
@@ -84,9 +68,15 @@ const PauseIconSVG = {
         const { props } = component;
 
         return (
-            <ButtonIconSVG {...props}>
+            <svg
+                class="sb-soundplayer-button-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 32 32"
+                fill="currentColor"
+                onClick={props.onClick}
+            >
                 <path d="M0 0 H12 V32 H0 z M20 0 H32 V32 H20 z" />
-            </ButtonIconSVG>
+            </svg>
         );
     }
 };
@@ -108,9 +98,14 @@ const NextIconSVG = {
         const { props } = component;
 
         return (
-            <ButtonIconSVG {...props}>
+            <svg
+                class="sb-soundplayer-cover-logo"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                onClick={props.onClick}
+            >
                 <path d="M4 4 L24 14 V4 H28 V28 H24 V18 L4 28 z " />
-            </ButtonIconSVG>
+            </svg>
         );
     }
 };
@@ -132,9 +127,14 @@ const PrevIconSVG = {
         const { props } = component;
 
         return (
-            <ButtonIconSVG {...props}>
+            <svg
+                class="sb-soundplayer-cover-logo"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                onClick={props.onClick}
+            >
                 <path d="M4 4 H8 V14 L28 4 V28 L8 18 V28 H4 z " />
-            </ButtonIconSVG>
+            </svg>
         );
     }
 };
