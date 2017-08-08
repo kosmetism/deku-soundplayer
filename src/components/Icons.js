@@ -45,7 +45,7 @@ const PlayIconSVG = {
 
         return (
             <svg
-                class="sb-soundplayer-cover-logo"
+                class="sb-soundplayer-button-icon"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
                 onClick={props.onClick}
@@ -99,7 +99,7 @@ const NextIconSVG = {
 
         return (
             <svg
-                class="sb-soundplayer-cover-logo"
+                class="sb-soundplayer-button-icon"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
                 onClick={props.onClick}
@@ -128,7 +128,7 @@ const PrevIconSVG = {
 
         return (
             <svg
-                class="sb-soundplayer-cover-logo"
+                class="sb-soundplayer-button-icon"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
                 onClick={props.onClick}

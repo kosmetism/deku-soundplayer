@@ -1,6 +1,6 @@
 {
   "name": "deku-soundplayer",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Create custom SoundCloud players with Deku",
   "main": "index.js",
   "scripts": {
